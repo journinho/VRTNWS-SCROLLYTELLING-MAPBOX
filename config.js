@@ -1,18 +1,19 @@
 var config = {
-    style: 'mapbox://styles/mapbox/satellite-streets-v11',
-    accessToken: 'pk.eyJ1IjoibWJ4c29sdXRpb25zIiwiYSI6ImNrMm01aG9hdTBlZGwzbXQ1ZXVrNHNmejAifQ.QHQA0N6XPWddCXtvoODHZg',
+    style: 'mapbox://styles/amradorjbayar/cl12t8tcu003s15pb3e995qk2',
+    accessToken: 'pk.eyJ1IjoiYW1yYWRvcmpiYXlhciIsImEiOiJjbDEwa253bXAwZ2puM2NwOWl2cHB3MWM0In0.jq-8XdMskVY5iTyK9eL1Iw',
     showMarkers: false,
-    theme: 'light',
+    theme: 'dark',
     use3dTerrain: true,
     title: 'De verwoesting van Marioepol',
     subtitle: 'Satelietbeelden tonen de totale verwoesting van de havenstad Marioepol',
+    image: 'https://images.vrt.be/w1280hx/2022/03/21/3ea00a0b-a90c-11ec-b07d-02b7b76bf47f.jpg',
     byline: '',
     footer: 'Source: Story text from Wikipedia, August 2019. Data from <a href="https://www.usgs.gov/centers/norock/science/retreat-glaciers-glacier-national-park">USGS</a>',
     chapters: [
         {
-            id: 'glacier-np',
+            id: 'ukraine',
             alignment: 'full',
-            title: 'Glacier National Park Glaciers',
+            title: 'Marioepol, de hel van Europa',
             image: 'https://www.rtlnieuws.nl/sites/default/files/content/images/2022/03/06/ANP-445080509.jpg?itok=HbGKqsFT&offsetX=50&offsetY=135&cropWidth=973&cropHeight=547&width=2048&height=1152&impolicy=dynamic',
             description: 'Glacier National Park is dominated by mountains which were carved into their present shapes by the huge glaciers of the last ice age. These glaciers have largely disappeared over the last 12,000 years. Evidence of widespread glacial action is found throughout the park in the form of U-shaped valleys, cirques, arêtes, and large outflow lakes radiating like fingers from the base of the highest peaks. Since the end of the ice ages, various warming and cooling trends have occurred. The last recent cooling trend was during the Little Ice Age, which took place approximately between 1550 and 1850. During the Little Ice Age, the glaciers in the park expanded and advanced, although to nowhere near as great an extent as they had during the Ice Age.',
             location: {
@@ -23,17 +24,13 @@ var config = {
             },
             onChapterEnter: [
                 {
-                    layer: 'gnpglaciers-1998',
-                    opacity: 0.25
+                    layer: 'mapbox-satellite',
+                    opacity: 0
                 },
-                {
-                    layer: 'glaciernp-boundary',
-                    opacity: 0.25
-                }
             ],
             onChapterExit: [
                 {
-                    layer: 'glaciernp-boundary',
+                    layer: 'mapbox-satellite',
                     opacity: 0
                 }
             ]
@@ -96,30 +93,35 @@ var config = {
                 pitch: 51.50,
                 bearing: -26.40
             },
-            onChapterEnter: [],
+            onChapterEnter: [
+                {
+                    layer: 'building-extrusion2',
+                    opacity: 1
+                }
+            ],
             onChapterExit: []
         },
         {
             id: 'blackfoot2015',
             alignment: 'left',
             title: 'Blackfoot Glacier, 2015',
-            image: '',
+            image: 'https://i.insider.com/62368816927f4a001886b2ec?width=1000&format=jpeg&auto=webp',
             description: 'Between 1998 and 2015, Blackfoot Glacier lost 31 acres of surface area (about 8%).',
             location: {
-                center: [-113.66573, 48.59181],
-                zoom: 12.92,
-                pitch: 51.50,
-                bearing: -26.40
+                center: { lon: 37.54855, lat: 47.09604 },
+                zoom: 17.39,
+                pitch: 56.00,
+                bearing: 14.40
             },
             onChapterEnter: [
                 {
-                    layer: 'gnpglaciers-2015',
-                    opacity: 0.25
+                    layer: 'building-extrusion2',
+                    opacity: 1
                 }
             ],
             onChapterExit: [
                 {
-                    layer: 'gnpglaciers-2015',
+                    layer: 'mapbox-satellite',
                     opacity: 0
                 }
             ]
@@ -131,12 +133,17 @@ var config = {
             image: '',
             description: 'Agassiz Glacier is in Glacier National Park in the U.S. state of Montana. It is named after Louis Agassiz, a Swiss-American glaciologist. The glacier is situated in a cirque to the southeast of Kintla Peak west of the Continental Divide. Agassiz Glacier is one of several glaciers that have been selected for monitoring by the U.S. Geological Survey\'s Glacier Monitoring Research program, which is researching changes to the mass balance of glaciers in and surrounding Glacier National Park.',
             location: {
-                center: [-114.15881, 48.93439],
-                zoom: 13.51,
-                pitch: 41.00,
-                bearing: 78.33
+                center: { lon: 37.54855, lat: 47.09604 },
+                zoom: 17.39,
+                pitch: 56.00,
+                bearing: 14.40
             },
-            onChapterEnter: [],
+            onChapterEnter: [
+                {
+                    layer: 'mapbox-satellite',
+                    opacity: 1
+                }
+            ],
             onChapterExit: []
         },
         {
@@ -146,20 +153,20 @@ var config = {
             image: '',
             description: 'Between 1998 and 2015, Agassiz Glacier lost 108 acres of surface area (about 37%).',
             location: {
-                center: [-114.15881, 48.93439],
-                zoom: 13.51,
-                pitch: 41.00,
-                bearing: 78.33
+                center: { lon: 37.54855, lat: 47.09604 },
+                zoom: 17.39,
+                pitch: 56.00,
+                bearing: 14.40
             },
             onChapterEnter: [
                 {
-                    layer: 'gnpglaciers-2015',
-                    opacity: 0.25,
+                    layer: 'mapbox-satellite',
+                    opacity: 1,
                 }
             ],
             onChapterExit: [
                 {
-                    layer: 'gnpglaciers-2015',
+                    layer: 'mapbox-satellite',
                     opacity: 0
                 }
             ]
@@ -286,3 +293,4 @@ var config = {
          }
     ]
 };
+
